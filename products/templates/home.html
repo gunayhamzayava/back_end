@@ -1,0 +1,18 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+{% comment %} {% block home %} {% endcomment %}
+    <h1>hellooo</h1>
+    {% for name in author %}
+        {% if name.image %}
+            <img src= " {{ name.image.url }} ">
+        {% else %}
+            <h3>No image...</h3>
+        {% endif %}
+        {% comment %} <img src= " {{ name.image.url }} "> {% endcomment %}
+        <h2>{{ name.title }}</h2>
+    {% endfor %}
+    {% comment %} <p>{{author.title}}</p> {% endcomment %}
+{% comment %} {% endblock home %} {% endcomment %}

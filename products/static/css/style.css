@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    background-color: #ffdab9;
+}
+
+.btn {
+    padding: 10px;
+    background-color: green;
+}
+
+div {
+    background-color: pink;
+}
+
+img {
+    width: 200px;
+    height: 100px;
+}

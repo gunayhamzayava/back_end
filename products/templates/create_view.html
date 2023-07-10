@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+{% block content %}
+<h1>Product Create Form</h1>
+<br />
+<form method="post">
+  
+  {% csrf_token %} {% comment %}
+  <div>
+    <label>Name</label>
+    <input type="text" id="name" name="name" class="name form-control" />
+  </div>
+
+  <div>
+    <label>Description</label>
+    <textarea
+      rows="10"
+      cols="30"
+      type="text"
+      id="description"
+      name="description"
+      class="description form-control"
+    ></textarea>
+  </div>
+
+  <div>
+    <label>{{form.price.label}}</label>  -- price labelini form'la elde etmek
+    {{form.price}}   --price inputu
+  </div>
+  {% endcomment %}
+
+
+  {% comment %} {{form.as_p}}  --hamisini getirir {% endcomment %}
+
+
+  {% comment %} as_p -- p teqine salir her inputu {% endcomment %}
+  {% comment %} as_table -- cedvele salmaq {% endcomment %}
+
+  {% comment %} <div class="error-box">
+    {% if form.errors %}
+      <p>{{form.errors}}</p>
+    {% endif %}
+  </div> {% endcomment %}
+
+  <div class="error-massage mb-4">
+    {% if form.errors %}
+      {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger" role="alert">
+          <p>{{error|escape}}</p>
+          <br>
+        </div>
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  {% for field in form %}
+  <div class="form-group">
+    <label>{{field.label}}</label>
+           {{field}}
+  </div>
+  {% endfor %}
+  
+  <button class="btn">Submit</button>
+</form>
+
+{% endblock content %}
+
+{% comment %} {% block task %}
+<h1>Product List</h1>
+
+<ul>
+  {% for product in products %}
+  <li>
+    {{product.name}} -- {{product.total_price}}
+    <br />
+    {% if product.description %} {{product.description}} {% else %} No
+    Description {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock task %} {% endcomment %}

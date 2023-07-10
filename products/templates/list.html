@@ -1,0 +1,36 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% load reg %}
+
+
+
+{% comment %} {% block context %} {% endcomment %}
+    {% for product in products %}
+        <h3>{{ product.name|lower|slash}}
+            {% if product.company_logo %}
+               <img src=" {{ product.company_logo.url }} " alt="">
+            {% else %}
+                No CompanyImage... 
+            {% endif %}
+        <br>
+        <br>
+            {{product.price|floatformat:2}}
+        <br>
+        <br>
+
+        {{ product.description|truncatechars:50}}
+        <br>
+        <br>
+        </h3>
+        <br>
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="">
+        {% else %}
+            <p>No Image...</p>
+        {% endif %}
+    {% endfor %}
+
+
+
+{% comment %} {% endblock context %} {% endcomment %}

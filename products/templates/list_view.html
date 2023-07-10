@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{%block body %}
+    {% for product in products %}
+        {{ product.name }}
+        <br>
+
+
+        {% comment %} 50den sonra noqteler {% endcomment %}
+        {{ product.description|truncatechars:50}}
+        <br>
+
+
+        {% comment %} (price - discount_price) (78980.0-dirsa bu sekilde gorsensin 78,980.00) {% endcomment %}
+        <p>{{ product.price|floatformat:2 }}</p>
+		{% if product.discount_price %}
+			<p>{{ product.discount_price|floatformat:2 }}</p>
+			<p>{{ product.total_price|floatformat:2 }}</p>
+		{% else %}
+			<p>{{ product.price|floatformat:2}}</p>
+		{% endif %}
+
+
+	    {% comment %} <created_at> (08.02bu sekilde gorsensin) {% endcomment %}
+        {{product.created_at|date:"d.m.Y"}}
+        <br>
+        <br>
+
+    {% endfor %}
+{% endblock body %}

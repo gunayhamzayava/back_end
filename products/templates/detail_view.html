@@ -1,0 +1,10 @@
+<h1>{{products.name}}</h1>
+
+<h4>Total Price: {{products.total_price}}</h4>
+
+<h4>Description:</h4>
+
+<p>
+  {% if products.description %} {{products.description}} {% else %} No Description
+  {% endif %}
+</p>
